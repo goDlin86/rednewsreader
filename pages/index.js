@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 
 import googleNewsAPI from 'google-news-json'
 
-import Item from './components/item'
+import Item from '../pages_lib/item'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
@@ -19,9 +19,9 @@ const themes = [
   {title: "World", link: "world", color: ""},
   {title: "Россия", link: "nation", color: ""},
   {title: "Спорт", link: "sports", color: ""},
-  {title: "Наука", link: "scitech", color: ""},
+  {title: "Наука", link: "science", color: ""},
   {title: "Культура", link: "entertainment", color: ""},
-  {title: "Бизнес", link: "auto", color: ""}
+  {title: "Бизнес", link: "business", color: ""}
 ]
 
 const Home = () => {
