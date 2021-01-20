@@ -1,65 +1,89 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+import React, { useEffect, useState } from 'react'
+//import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+
+import Item from './components/item'
+
+import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
+dayjs.locale('ru')
+dayjs.extend(relativeTime)
+
+const themes = [
+  {title: "World", link: "world", color: ""},
+  {title: "Россия", link: "nation", color: ""},
+  {title: "Спорт", link: "sports", color: ""},
+  {title: "Наука", link: "scitech", color: ""},
+  {title: "Культура", link: "entertainment", color: ""},
+  {title: "Авто", link: "auto", color: ""}
+]
+
+const Home = () => {
+  const [theme, setTheme] = useState(0)
+  const [items, setItems] = useState([])
+
+  useEffect(() => {
+    fetchData()
+  }, [theme])
+
+  const fetchData = async () => {
+    try {
+      const res = await fetch("https://google-news.p.rapidapi.com/v1/topic_headlines?lang=ru&country=RU&topic=world", {
+	      "method": "GET",
+	      "headers": {
+		      "x-rapidapi-key": "524d06434bmsh6315a26a37e8d6fp1a0727jsn3e7f932135bd",
+		      "x-rapidapi-host": "google-news.p.rapidapi.com"
+	      }
+      })
+      const json = await res.json()
+      const articles = json.articles || []
+
+      const news = articles.map(item => {
+        const n = {}
+
+        n.title = item.title.substr(0, item.title.lastIndexOf(" - "))
+        n.link = item.link
+        n.publisher = item.source.title
+        n.time = dayjs(item.published).fromNow()
+
+        return n
+      })
+      setItems(news)
+
+    } catch(err) {
+      console.error(err)
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Red News Reader</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <header className={styles.header}>
+        {themes.map((theme, i) => (
+          <a href={theme.link} key={i}>{theme.title}</a>
+        ))}
+      </header>
+
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        {items.length === 0 && <div className={styles.footer}>Загрузка...</div>}
+        {items.map((item, i) => (
+          <Item item={item} key={i} />
+        ))}
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
+          Powered by Google News
       </footer>
     </div>
   )
 }
+
+export default Home
