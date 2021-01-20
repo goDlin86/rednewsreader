@@ -4,6 +4,8 @@ import styles from '../styles/Home.module.css'
 import React, { useEffect, useState } from 'react'
 //import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
+import googleNewsAPI from 'google-news-json'
+
 import Item from './components/item'
 
 import dayjs from 'dayjs'
@@ -19,7 +21,7 @@ const themes = [
   {title: "Спорт", link: "sports", color: ""},
   {title: "Наука", link: "scitech", color: ""},
   {title: "Культура", link: "entertainment", color: ""},
-  {title: "Авто", link: "auto", color: ""}
+  {title: "Бизнес", link: "auto", color: ""}
 ]
 
 const Home = () => {
@@ -32,13 +34,16 @@ const Home = () => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch("https://google-news.p.rapidapi.com/v1/topic_headlines?lang=ru&country=RU&topic=world", {
-	      "method": "GET",
-	      "headers": {
-		      "x-rapidapi-key": "524d06434bmsh6315a26a37e8d6fp1a0727jsn3e7f932135bd",
-		      "x-rapidapi-host": "google-news.p.rapidapi.com"
-	      }
-      })
+      // const res = await fetch("https://google-news.p.rapidapi.com/v1/topic_headlines?lang=ru&country=RU&topic=world", {
+	    //   "method": "GET",
+	    //   "headers": {
+		  //     "x-rapidapi-key": "524d06434bmsh6315a26a37e8d6fp1a0727jsn3e7f932135bd",
+		  //     "x-rapidapi-host": "google-news.p.rapidapi.com"
+	    //   }
+      // })
+
+      const res = await googleNewsAPI.getNews(googleNewsAPI.TOPIC, googleNewsAPI.TOPICS_WORLD, "ru-RU")
+
       const json = await res.json()
       const articles = json.articles || []
 
