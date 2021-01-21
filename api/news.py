@@ -8,10 +8,11 @@ themes = ['world', 'nation', 'scitech', 'entertainment', 'sports', 'business']
 class handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
-        content_len = int(self.headers['content-length'])
-        post_body = self.rfile.read(content_len)
-        data = json.loads(post_body)
-        theme = data['theme']
+        # content_len = int(self.headers['content-length'])
+        # post_body = self.rfile.read(content_len)
+        # data = json.loads(post_body)
+        # theme = data['theme']
+        theme = 'world'
 
         if theme in themes:
             url = 'https://news.google.com/news/rss/headlines/section/topic/'+theme.upper()+'.ru_ru/?ned=ru_ru&hl=ru'
