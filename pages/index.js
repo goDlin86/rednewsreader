@@ -61,7 +61,7 @@ const Home = () => {
       const data = new FormData()
       data.append("theme", "world")
 
-      const res = await fetch("/api/news", { method: "POST" })//, body: data })
+      const res = await fetch("/api/news", { method: "POST", body: data })
       const json = await res.json()
       const results = json || []
 
