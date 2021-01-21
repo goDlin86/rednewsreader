@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
         if theme in themes:
             url = 'https://news.google.com/news/rss/headlines/section/topic/'+theme.upper()+'.ru_ru/?ned=ru_ru&hl=ru'
             r = requests.get(url)
-            # xml = etree.parse(r.text)
+            xml = etree.parse(r.text)
             # #r.close()
             # root = xml.getroot()
 
