@@ -7,7 +7,7 @@ class handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         themes = ['world', 'nation', 'scitech', 'entertainment', 'sports', 'business']
-        
+
         # content_len = int(self.headers['content-length'])
         # post_body = self.rfile.read(content_len)
         # data = json.loads(post_body)
@@ -34,5 +34,6 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
-        self.wfile.write(json.dumps(news).encode())
+        self.wfile.write(json.dumps({'title': 'asdads'}).encode())
+        # self.wfile.write(json.dumps(news).encode())
         return
