@@ -42,21 +42,39 @@ const Home = () => {
 	    //   }
       // })
 
-      const res = await googleNewsAPI.getNews(googleNewsAPI.TOPIC, googleNewsAPI.TOPICS_WORLD, "ru-RU")
+      // const res = await googleNewsAPI.getNews(googleNewsAPI.TOPIC, googleNewsAPI.TOPICS_WORLD, "ru-RU")
 
+      // const json = await res.json()
+      // const articles = json.articles || []
+
+      // const news = articles.map(item => {
+      //   const n = {}
+
+      //   n.title = item.title.substr(0, item.title.lastIndexOf(" - "))
+      //   n.link = item.link
+      //   n.publisher = item.source.title
+      //   n.time = dayjs(item.published).fromNow()
+
+      //   return n
+      // })
+
+      const data = new FormData()
+      data.append("theme", "world")
+
+      const res = await fetch("/api/news", { method: "POST", body: data })
       const json = await res.json()
-      const articles = json.articles || []
+      const results = json || []
 
-      const news = articles.map(item => {
+      const news = results.map((item, i) => {
         const n = {}
-
         n.title = item.title.substr(0, item.title.lastIndexOf(" - "))
+        n.publisher = item.title.substr(item.title.lastIndexOf(" - ") + 3)
         n.link = item.link
-        n.publisher = item.source.title
-        n.time = dayjs(item.published).fromNow()
+        n.time = dayjs(item.date).fromNow()
 
         return n
       })
+
       setItems(news)
 
     } catch(err) {
