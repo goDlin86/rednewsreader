@@ -60,7 +60,7 @@ const Home = () => {
 
       //const data = new FormData()
       //data.append("theme", "world")
-      data = JSON.stringify({ theme: "world" })
+      const data = JSON.stringify({ theme: "world" })
 
       const res = await fetch("/api/news", { method: "POST", body: data })
       const json = await res.json()
