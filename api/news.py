@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler
-import urllib2
+import requests
 from lxml import etree
 import json
 
@@ -15,9 +15,9 @@ class handler(BaseHTTPRequestHandler):
 
         if theme in themes:
             url = 'https://news.google.com/news/rss/headlines/section/topic/'+theme.upper()+'.ru_ru/?ned=ru_ru&hl=ru'
-            r = urllib2.urlopen(url)
-            xml = etree.parse(r)
-            r.close()
+            r = requests.get(url)
+            xml = etree.parse(r.text)
+            #r.close()
             root = xml.getroot()
 
             for item in root.find('channel').iterfind('item'):
