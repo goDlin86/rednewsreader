@@ -14,22 +14,22 @@ class handler(BaseHTTPRequestHandler):
         # theme = data['theme']
         theme = 'world'
 
-        if theme in themes:
-            url = 'https://news.google.com/news/rss/headlines/section/topic/'+theme.upper()+'.ru_ru/?ned=ru_ru&hl=ru'
-            r = requests.get(url)
-            xml = etree.parse(r.text)
-            #r.close()
-            root = xml.getroot()
+        # if theme in themes:
+        #     url = 'https://news.google.com/news/rss/headlines/section/topic/'+theme.upper()+'.ru_ru/?ned=ru_ru&hl=ru'
+        #     r = requests.get(url)
+        #     xml = etree.parse(r.text)
+        #     #r.close()
+        #     root = xml.getroot()
 
-            for item in root.find('channel').iterfind('item'):
-                news.append({
-                    'title': item.find('title').text,
-                    'link': item.find('link').text,
-                    'description': item.find('description').text,
-                    'date': item.find('pubDate').text
-                })
-        else:
-            news.append({'title': 'Not found theme'})
+        #     for item in root.find('channel').iterfind('item'):
+        #         news.append({
+        #             'title': item.find('title').text,
+        #             'link': item.find('link').text,
+        #             'description': item.find('description').text,
+        #             'date': item.find('pubDate').text
+        #         })
+        # else:
+        #     news.append({'title': 'Not found theme'})
 
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
