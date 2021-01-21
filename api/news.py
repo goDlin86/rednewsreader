@@ -18,23 +18,20 @@ class handler(BaseHTTPRequestHandler):
         if theme in themes:
             url = 'https://news.google.com/news/rss/headlines/section/topic/'+theme.upper()+'.ru_ru/?ned=ru_ru&hl=ru'
             r = requests.get(url)
-            xml = etree.parse(r.content)
-            # #r.close()
-            # root = xml.getroot()
+            xml = etree.fromstring(r.content)
+            root = xml.xpath('//item')
 
-            # for item in root.find('channel').iterfind('item'):
-            #     news.append({
-            #         'title': item.find('title').text,
-            #         'link': item.find('link').text,
-            #         'description': item.find('description').text,
-            #         'date': item.find('pubDate').text
-            #     })
+            for item in root:
+                news.append({
+                    'title': item.xpath('title/text()')[0],
+                    'link': item.xpath('link/text()')[0],
+                    'date': item.xpath('pubDate/text()')[0]
+                })
         else:
             news.append({'title': 'Not found theme'})
 
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
-        # self.wfile.write(json.dumps({'title': 'asdads'}).encode())
         self.wfile.write(json.dumps(news).encode())
         return
