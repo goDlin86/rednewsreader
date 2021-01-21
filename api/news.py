@@ -3,11 +3,11 @@ import requests
 from lxml import etree
 import json
 
-themes = ['world', 'nation', 'scitech', 'entertainment', 'sports', 'business']
-
 class handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
+        themes = ['world', 'nation', 'scitech', 'entertainment', 'sports', 'business']
+        
         # content_len = int(self.headers['content-length'])
         # post_body = self.rfile.read(content_len)
         # data = json.loads(post_body)
