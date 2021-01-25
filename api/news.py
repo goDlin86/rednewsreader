@@ -18,9 +18,8 @@ class handler(BaseHTTPRequestHandler):
             url = 'https://news.google.com/news/rss/headlines/section/topic/'+theme.upper()+'.ru_ru/?ned=ru_ru&hl=ru'
             r = requests.get(url)
             xml = etree.fromstring(r.content)
-            root = xml.xpath('//item')
 
-            for item in root:
+            for item in xml.xpath('//item'):
                 news.append({
                     'title': item.xpath('title/text()')[0],
                     'link': item.xpath('link/text()')[0],
