@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Switch, Route, NavLink, useParams } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Switch, Route, NavLink, useParams } from 'react-router-dom'
 
 import Item from '../pages_lib/item'
 
@@ -38,6 +38,7 @@ const Home = () => {
         </header>
 
         <Switch>
+          <Redirect exact from="/" to="/world" />
           <Route path='/:t' children={<Main />} />
         </Switch>
 
@@ -52,16 +53,16 @@ const Home = () => {
 const Main = () => {
   let { t } = useParams();
   console.log(t)
-  const [theme, setTheme] = useState(t)
+  //const [theme, setTheme] = useState(t)
   const [items, setItems] = useState([])
 
-  useEffect(() => {
-    fetchData()
-  }, [theme])
+  // useEffect(() => {
+  //   fetchData()
+  // }, [theme])
 
   const fetchData = async () => {
     try {
-      const data = JSON.stringify({ theme: theme })
+      const data = JSON.stringify({ theme: t })
 
       const res = await fetch("/api/news", { method: "POST", body: data })
       const json = await res.json()
@@ -83,6 +84,8 @@ const Main = () => {
       console.error(err)
     }
   }
+
+  fetchData()
 
   return (
     <main className={styles.main}>
