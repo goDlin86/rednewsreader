@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Redirect, Switch, Route, NavLink, useParams } from 'react-router-dom'
+import ReactGA from 'react-ga'
 
 import Item from '../pages_lib/item'
 
@@ -12,6 +13,8 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 
 dayjs.locale('ru')
 dayjs.extend(relativeTime)
+
+ReactGA.initialize('UA-26528518-5')
 
 const themes = [
   {title: "World", link: "world", color: ""},
@@ -52,7 +55,9 @@ const Home = () => {
 
 const Main = () => {
   const [items, setItems] = useState([])
-  let { theme } = useParams()
+  const { theme } = useParams()
+
+  ReactGA.pageview(theme)
 
   useEffect(() => {
     fetchData()
