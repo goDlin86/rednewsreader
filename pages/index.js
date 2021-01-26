@@ -39,7 +39,7 @@ const Home = () => {
 
         <Switch>
           <Redirect exact from="/" to="/world" />
-          <Route path='/:t' children={<Main />} />
+          <Route path='/:theme' children={<Main />} />
         </Switch>
 
         <footer className={styles.footer}>
@@ -51,17 +51,16 @@ const Home = () => {
 }
 
 const Main = () => {
-  let { t } = useParams()
-  //const [theme, setTheme] = useState(t)
   const [items, setItems] = useState([])
+  let { theme } = useParams()
 
-  // useEffect(() => {
-  //   fetchData()
-  // }, [theme])
+  useEffect(() => {
+    fetchData()
+  }, [theme])
 
   const fetchData = async () => {    
     try {
-      const data = JSON.stringify({ theme: t })
+      const data = JSON.stringify({ theme: theme })
 
       const res = await fetch("/api/news", { method: "POST", body: data })
       const json = await res.json()
@@ -83,9 +82,6 @@ const Main = () => {
       console.error(err)
     }
   }
-
-  //setItems([])
-  fetchData()
 
   return (
     <main className={styles.main}>
