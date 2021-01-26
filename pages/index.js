@@ -1,20 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Redirect, Switch, Route, NavLink, useParams } from 'react-router-dom'
-import ReactGA from 'react-ga'
+import React from 'react'
+import { BrowserRouter as Router, Redirect, Switch, Route, NavLink } from 'react-router-dom'
 
-import Item from '../pages_lib/item'
-
-import dayjs from 'dayjs'
-import 'dayjs/locale/ru'
-import relativeTime from 'dayjs/plugin/relativeTime'
-
-dayjs.locale('ru')
-dayjs.extend(relativeTime)
-
-ReactGA.initialize('UA-26528518-5')
+import Main from '../pages_lib/main'
 
 const themes = [
   {title: "World", link: "world", color: ""},
@@ -50,51 +40,6 @@ const Home = () => {
         </footer>
       </div>
     </Router>
-  )
-}
-
-const Main = () => {
-  const [items, setItems] = useState([])
-  const { theme } = useParams()
-
-  ReactGA.pageview(theme)
-
-  useEffect(() => {
-    fetchData()
-  }, [theme])
-
-  const fetchData = async () => {    
-    try {
-      const data = JSON.stringify({ theme: theme })
-
-      const res = await fetch("/api/news", { method: "POST", body: data })
-      const json = await res.json()
-      const results = json || []
-
-      const news = results.map((item, i) => {
-        const n = {}
-        n.title = item.title.substr(0, item.title.lastIndexOf(" - "))
-        n.publisher = item.title.substr(item.title.lastIndexOf(" - ") + 3)
-        n.link = item.link
-        n.time = dayjs(item.date).fromNow()
-
-        return n
-      })
-
-      setItems(news)
-
-    } catch(err) {
-      console.error(err)
-    }
-  }
-
-  return (
-    <main className={styles.main}>
-      {items.length === 0 && <div className={styles.footer}>Загрузка...</div>}
-      {items.map((item, i) => (
-        <Item item={item} key={i} />
-      ))}
-    </main>
   )
 }
 
