@@ -17,7 +17,7 @@ const themes = [
   {title: "World", link: "world", color: ""},
   {title: "Россия", link: "nation", color: ""},
   {title: "Спорт", link: "sports", color: ""},
-  {title: "Наука", link: "science", color: ""},
+  {title: "Наука", link: "scitech", color: ""},
   {title: "Культура", link: "entertainment", color: ""},
   {title: "Бизнес", link: "business", color: ""}
 ]
@@ -51,8 +51,7 @@ const Home = () => {
 }
 
 const Main = () => {
-  let { t } = useParams();
-  console.log(t)
+  let { t } = useParams()
   //const [theme, setTheme] = useState(t)
   const [items, setItems] = useState([])
 
@@ -60,7 +59,7 @@ const Main = () => {
   //   fetchData()
   // }, [theme])
 
-  const fetchData = async () => {
+  const fetchData = async () => {    
     try {
       const data = JSON.stringify({ theme: t })
 
@@ -85,6 +84,7 @@ const Main = () => {
     }
   }
 
+  //setItems([])
   fetchData()
 
   return (
