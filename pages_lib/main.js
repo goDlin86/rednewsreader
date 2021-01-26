@@ -25,7 +25,9 @@ const Main = () => {
         fetchData()
     }, [theme])
 
-    const fetchData = async () => {    
+    const fetchData = async () => {
+        setItems([])
+        
         try {
         const data = JSON.stringify({ theme: theme })
 
