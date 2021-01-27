@@ -27,7 +27,7 @@ const Main = () => {
 
     const fetchData = async () => {
         setItems([])
-        
+
         try {
         const data = JSON.stringify({ theme: theme })
 
@@ -54,10 +54,10 @@ const Main = () => {
 
     return (
         <main className={styles.main}>
-        {items.length === 0 && <div className={styles.footer}>Загрузка...</div>}
-        {items.map((item, i) => (
-            <Item item={item} key={i} />
-        ))}
+            {items.length === 0 && <div className={styles.footer}>Загрузка...</div>}
+            {items.map((item, i) => (
+                <Item item={item} key={i} />
+            ))}
         </main>
     )
 }
