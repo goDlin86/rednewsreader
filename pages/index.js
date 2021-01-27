@@ -4,16 +4,8 @@ import styles from '../styles/Home.module.css'
 import React from 'react'
 import { BrowserRouter as Router, Redirect, Switch, Route, NavLink } from 'react-router-dom'
 
+import themes from '../pages_lib/themes'
 import Main from '../pages_lib/main'
-
-const themes = [
-  {title: "World", link: "world", color: ""},
-  {title: "Россия", link: "nation", color: ""},
-  {title: "Спорт", link: "sports", color: ""},
-  {title: "Наука", link: "scitech", color: ""},
-  {title: "Культура", link: "entertainment", color: ""},
-  {title: "Бизнес", link: "business", color: ""}
-]
 
 const Home = () => {
   return (

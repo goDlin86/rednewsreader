@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styles from '../styles/Home.module.css'
 
+import themes from '../pages_lib/themes'
 import Item from './item'
 
 import dayjs from 'dayjs'
@@ -18,6 +19,8 @@ ReactGA.initialize('UA-26528518-5')
 const Main = () => {
     const [items, setItems] = useState([])
     const { theme } = useParams()
+
+    const color = themes.find(t => t.link === theme).color
 
     ReactGA.pageview(theme)
 
@@ -56,7 +59,7 @@ const Main = () => {
         <main className={styles.main}>
             {items.length === 0 && <div className={styles.footer}>Загрузка...</div>}
             {items.map((item, i) => (
-                <Item item={item} key={i} />
+                <Item item={item} color={color} key={i} />
             ))}
         </main>
     )
