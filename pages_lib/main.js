@@ -20,7 +20,7 @@ const Main = () => {
     const [items, setItems] = useState([])
     const { theme } = useParams()
 
-    const color = themes.find(t => t.link === theme).color
+    const t = themes.find(t => t.link === theme) || themes[0]
 
     ReactGA.pageview(theme)
 
@@ -59,7 +59,7 @@ const Main = () => {
         <main className={styles.main}>
             {items.length === 0 && <div className={styles.footer}>Загрузка...</div>}
             {items.map((item, i) => (
-                <Item item={item} color={color} key={i} />
+                <Item item={item} color={t.color} key={i} />
             ))}
         </main>
     )
