@@ -64,13 +64,12 @@ const Main = () => {
     return (
         <main className={styles.main}>
             {items.length === 0 && <div className={styles.footer}>Загрузка...</div>}
-            {trail.map((props, i) => {
-                return (
-                    <a.div key={i}>
+            {trail.map((props, i) => (
+                    <a.div key={i} style={props}>
                         <Item item={items[i]} color={t.color} />
                     </a.div>
                 )
-            })}
+            )}
         </main>
     )
 }
