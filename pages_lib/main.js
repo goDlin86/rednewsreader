@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useTrail, animated as a } from 'react-spring'
 import styles from '../styles/Home.module.css'
 
 import themes from '../pages_lib/themes'
@@ -21,6 +22,11 @@ const Main = () => {
     const { theme } = useParams()
 
     const t = themes.find(t => t.link === theme) || themes[0]
+
+    const trail = useTrail(items.length, {
+        from: { marginLeft: -20, opacity: 0, transform: 'translate3d(0,-40px,0)' },
+        to: { marginLeft: 20, opacity: 1, transform: 'translate3d(0,0px,0)' }
+    })
 
     ReactGA.pageview(theme)
 
@@ -58,9 +64,13 @@ const Main = () => {
     return (
         <main className={styles.main}>
             {items.length === 0 && <div className={styles.footer}>Загрузка...</div>}
-            {items.map((item, i) => (
-                <Item item={item} color={t.color} index={i} key={i} />
-            ))}
+            {trail.map((props, i) => {
+                return (
+                    <a.div key={i}>
+                        <Item item={items[i]} color={t.color} />
+                    </a.div>
+                )
+            })}
         </main>
     )
 }
