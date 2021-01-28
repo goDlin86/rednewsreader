@@ -59,7 +59,7 @@ const Main = () => {
         <main className={styles.main}>
             {items.length === 0 && <div className={styles.footer}>Загрузка...</div>}
             {items.map((item, i) => (
-                <Item item={item} color={t.color} key={i} />
+                <Item item={item} color={t.color} index={i} key={i} />
             ))}
         </main>
     )
