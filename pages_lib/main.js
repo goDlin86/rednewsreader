@@ -24,8 +24,8 @@ const Main = () => {
     const t = themes.find(t => t.link === theme) || themes[0]
 
     const trail = useTrail(items.length, {
-        from: { marginLeft: -20, opacity: 0, transform: 'translate3d(0,-40px,0)' },
-        to: { marginLeft: 20, opacity: 1, transform: 'translate3d(0,0px,0)' }
+        from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
+        to: { opacity: 1, transform: 'translate3d(0,0px,0)' }
     })
 
     ReactGA.pageview(theme)
