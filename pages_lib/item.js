@@ -1,8 +1,8 @@
 import styles from '../styles/Home.module.css'
 
-const Item = ({ item, color }) => {
+const Item = ({ item, color, key }) => {
     return (
-        <article className={styles.article}>
+        <article className={styles.article} style={{transform: 'translateY(0)', 'transitionDelay': `${ key * .1 }s`}}>
           <a className={styles.title} href={item.link} target="_blank">
             {item.title}
           </a>

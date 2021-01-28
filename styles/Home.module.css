@@ -89,6 +89,10 @@
   background-color: white;
   box-shadow: 6px 6px 21px -11px rgb(105 105 105 / 50%);
   font-weight: 700;
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  transform: translateY(30px);
 }
 .title {
   display: block;
