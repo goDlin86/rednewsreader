@@ -23,7 +23,7 @@ const Main = () => {
 
     const t = themes.find(t => t.link === theme) || themes[0]
 
-    const trail = useTrail(items.length, {
+    const trail = useTrail(items.length > 10 ? 10 : items.length, {
         from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
         to: { opacity: 1, transform: 'translate3d(0,0px,0)' }
     })
@@ -70,6 +70,7 @@ const Main = () => {
                     </a.div>
                 )
             )}
+            {items.slice(10).map((item, i) => <Item item={item} color={t.color} key={10+i} />)}
         </main>
     )
 }
