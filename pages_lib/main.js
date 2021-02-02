@@ -38,23 +38,23 @@ const Main = () => {
         setItems([])
 
         try {
-        const data = JSON.stringify({ theme: theme })
+            const data = JSON.stringify({ theme: theme })
 
-        const res = await fetch("/api/news", { method: "POST", body: data })
-        const json = await res.json()
-        const results = json || []
+            const res = await fetch("/api/news", { method: "POST", body: data })
+            const json = await res.json()
+            const results = json || []
 
-        const news = results.map((item, i) => {
-            const n = {}
-            n.title = item.title.substr(0, item.title.lastIndexOf(" - "))
-            n.publisher = item.title.substr(item.title.lastIndexOf(" - ") + 3)
-            n.link = item.link
-            n.time = dayjs(item.date).fromNow()
+            const news = results.map((item, i) => {
+                const n = {}
+                n.title = item.title.substr(0, item.title.lastIndexOf(" - "))
+                n.publisher = item.title.substr(item.title.lastIndexOf(" - ") + 3)
+                n.link = item.link
+                n.time = dayjs(item.date).fromNow()
 
-            return n
-        })
+                return n
+            })
 
-        setItems(news)
+            setItems(news)
 
         } catch(err) {
             console.error(err)
