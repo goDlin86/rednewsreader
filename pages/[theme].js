@@ -27,7 +27,8 @@ export default function Main() {
         async (url) => {
             const res = await fetch(url, { method: 'POST' })
             return res.json()
-        }
+        },
+        { revalidateOnFocus: false }
     )
 
     //ReactGA.pageview(router.query.theme)
