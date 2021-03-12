@@ -1,7 +1,6 @@
 {
   "name": "rednewsreader",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,7 +12,10 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-ga": "^3.3.0",
-    "react-router-dom": "^5.2.0",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "swr": "^0.5.2"
+  },
+  "devDependencies": {
+    "node-html-parser": "^1.4.9"
   }
 }
