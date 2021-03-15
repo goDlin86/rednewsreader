@@ -13,9 +13,10 @@ export default async function handler(req, res) {
 
   const news = []
   items.forEach(item => {
+    const link = item.innerHTML.substring(item.innerHTML.indexOf('<link>') + 6, item.innerHTML.indexOf('<guid'))
     news.push({
       title: item.querySelector('title').text,
-      link: item.querySelector('link').text,
+      link: link, //item.querySelector('link').text,
       date: item.querySelector('pubdate').text
     })
   })
