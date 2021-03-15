@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import themes from './themes'
 
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Nav.module.css'
 
 const Nav = () => {
     const { asPath } = useRouter()

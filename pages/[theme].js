@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Nav from '../pages_lib/Nav'
 import useSwr from 'swr'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useTrail, animated as a } from 'react-spring'
 import styles from '../styles/Home.module.css'
 
 import themes from '../pages_lib/themes'
+import Nav from '../pages_lib/Nav'
 import Item from '../pages_lib/item'
 
 import dayjs from 'dayjs'
@@ -32,6 +32,12 @@ export default function Main() {
     )
 
     //ReactGA.pageview(router.query.theme)
+
+    const trail = useTrail(8, {
+        from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
+        to: { opacity: 1, transform: 'translate3d(0,0px,0)' }
+    })
+    console.log('render')
     
     var content = ''
     if (error) 
@@ -47,13 +53,17 @@ export default function Main() {
                 time: dayjs(item.date).fromNow()
             }
         ))
-
-        // const trail = useTrail(data.length > 10 ? 10 : data.length, {
-        //     from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
-        //     to: { opacity: 1, transform: 'translate3d(0,0px,0)' }
-        // })
         
-        content = items.map((item, i) => <Item item={item} color={t.color} key={10+i} />)
+        content = <>
+            {trail.map((props, i) => (
+                    <a.div key={i} style={props}>
+                        <Item item={items[i]} color={t.color} />
+                    </a.div>
+                )
+            )}
+            {items.slice(8).map((item, i) => <Item item={item} color={t.color} key={10+i} />)}
+        </>
+
     }
 
     return (
