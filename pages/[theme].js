@@ -17,7 +17,7 @@ dayjs.extend(relativeTime)
 
 import ReactGA from 'react-ga'
 
-//ReactGA.initialize('UA-26528518-5')
+ReactGA.initialize('UA-26528518-5')
 
 export default function Main() {
     const router = useRouter()
@@ -31,13 +31,11 @@ export default function Main() {
         { revalidateOnFocus: false }
     )
 
-    //ReactGA.pageview(router.query.theme)
-
     const trail = useTrail(8, {
         from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
         to: { opacity: 1, transform: 'translate3d(0,0px,0)' }
     })
-    console.log('render')
+    //console.log('render')
     
     var content = ''
     if (error) 
@@ -53,6 +51,7 @@ export default function Main() {
                 time: dayjs(item.date).fromNow()
             }
         ))
+        ReactGA.pageview(router.query.theme)
         
         content = <>
             {trail.map((props, i) => (
