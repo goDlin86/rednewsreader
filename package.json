@@ -16,6 +16,6 @@
     "swr": "^0.5.2"
   },
   "devDependencies": {
-    "node-html-parser": "^1.4.9"
+    "node-html-parser": "^3.0.0"
   }
 }
