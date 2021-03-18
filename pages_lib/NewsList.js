@@ -4,7 +4,7 @@ import { useTrail, animated as a } from 'react-spring'
 import styles from '../styles/Home.module.css'
 
 import themes from './themes'
-import Item from './Item1'
+import Item from './Item'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
