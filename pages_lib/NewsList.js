@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { useTrail, animated as a } from 'react-spring'
 import styles from '../styles/Home.module.css'
 
-import themes from '../pages_lib/themes'
-import Item from '../pages_lib/Item'
+import themes from './themes'
+import Item from './Item1'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'

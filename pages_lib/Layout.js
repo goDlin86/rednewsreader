@@ -3,8 +3,6 @@ import Nav from './Nav'
 
 import styles from '../styles/Home.module.css'
 
-import themes from './themes'
-
 export default function Layout({ children }) {
     return (
         <>
