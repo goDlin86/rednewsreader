@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Nav from './Nav'
 
 import styles from '../styles/Home.module.css'
 
@@ -12,7 +11,6 @@ export default function Layout({ children }) {
             </Head>
 
             <div className={styles.container}>
-                <Nav />
 
                 {children}
 
