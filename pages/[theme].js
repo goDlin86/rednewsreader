@@ -1,5 +1,5 @@
 import Layout from '../pages_lib/Layout'
-import Nav from './Nav'
+import Nav from '../pages_lib/Nav'
 import NewsList from '../pages_lib/NewsList'
 
 export default function Main() {
