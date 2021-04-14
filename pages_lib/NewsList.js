@@ -1,6 +1,5 @@
 import useSwr from 'swr'
 import { useRouter } from 'next/router'
-import { useTrail, animated as a } from 'react-spring'
 import styles from '../styles/Home.module.css'
 
 import themes from './themes'
@@ -28,10 +27,6 @@ export default function NewsList({ theme, initialData }) {
         { initialData, revalidateOnFocus: false }
     )
 
-    const trail = useTrail(8, {
-        from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
-        to: { opacity: 1, transform: 'translate3d(0,0px,0)' }
-    })
     //console.log('render')
     
     if (error) return <div className={styles.footer}>Ошибка</div>
@@ -50,13 +45,7 @@ export default function NewsList({ theme, initialData }) {
         
     return (
         <>
-            {trail.map((props, i) => (
-                    <a.div key={i} style={props}>
-                        <Item item={items[i]} color={t.color} />
-                    </a.div>
-                )
-            )}
-            {items.slice(8).map((item, i) => <Item item={item} color={t.color} key={10+i} />)}
+            {items.map((item, i) => <Item item={item} color={t.color} key={i} />)}
         </>
     )
 }
