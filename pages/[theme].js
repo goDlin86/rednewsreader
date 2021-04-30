@@ -15,6 +15,6 @@ export default function Main(props) {
 
 export async function getServerSideProps({ query }) {
     const baseUrl = 'https://rednewsreader.vercel.app'//'http://localhost:3000'
-    const data = await fetcher(baseUrl + '/api/' + query.theme)
+    const data = query.theme === 'world' ? await fetcher(baseUrl + '/api/' + query.theme) : null
     return { props: { theme: query.theme, initialData: data } }
 }
