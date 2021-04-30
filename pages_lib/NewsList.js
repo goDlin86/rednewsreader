@@ -1,4 +1,5 @@
 import useSwr from 'swr'
+import { useRouter} from 'next/router'
 import styles from '../styles/Home.module.css'
 
 import themes from './themes'
@@ -17,12 +18,13 @@ ReactGA.initialize('UA-26528518-5')
 
 const fetcher = url => fetch(url).then(res => res.json())
 
-export default function NewsList({ theme, initialData }) {
-    const t = themes.find(t => t.link === '/' + theme) || themes[0]
+export default function NewsList() {
+    const { query } = useRouter()
+    const t = themes.find(t => t.link === '/' + query.theme) || themes[0]
     const { data, error } = useSwr(
-        theme ? '/api/' + theme : null, 
+        query.theme ? '/api/' + query.theme : null, 
         fetcher,
-        { initialData, revalidateOnFocus: false }
+        { revalidateOnFocus: false }
     )
     
     if (error) return <div className={styles.footer}>Ошибка</div>
@@ -37,7 +39,7 @@ export default function NewsList({ theme, initialData }) {
             time: dayjs(item.date).fromNow()
         }
     ))
-    ReactGA.pageview(theme)
+    ReactGA.pageview(query.theme)
         
     return (
         <>
