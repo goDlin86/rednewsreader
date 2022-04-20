@@ -12,9 +12,9 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.locale('ru')
 dayjs.extend(relativeTime)
 
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 
-ReactGA.initialize('UA-26528518-5')
+ReactGA.initialize('G-FB40LD9BT4')
 
 const fetcher = url => fetch(url).then(res => res.json())
 
@@ -39,7 +39,7 @@ export default function NewsList() {
             time: dayjs(item.date).fromNow()
         }
     ))
-    ReactGA.pageview(query.theme)
+    ReactGA.send({ hitType: 'pageview', page: '/' + query.theme })
         
     return (
         <>
