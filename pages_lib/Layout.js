@@ -15,10 +15,7 @@ export default function Layout({ children }) {
             <div className={styles.container}>
 
                 {children}
-
-                <footer className={styles.footer}>
-                    Powered by Google News
-                </footer>
+                
             </div>
         </>
     )
