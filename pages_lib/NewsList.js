@@ -50,7 +50,7 @@ export default function NewsList() {
     return (
         <AnimatePresence initial={false} exitBeforeEnter>
             <motion.div
-                key={query.theme}
+                key={query.theme + (data ? 'data' : 'load')}
                 initial='initial'
                 animate='animate'
                 exit='exit'
