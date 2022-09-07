@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "dayjs": "^1.10.3",
-    "framer-motion": "^6.5.1",
+    "framer-motion": "^7.0.0npm run dev",
     "next": "^12.1.0",
     "node-html-parser": "^5.0.0",
     "react": "^18.0.0",
