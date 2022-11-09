@@ -22,7 +22,7 @@ const upContent = {
 }
 
 async function fetchData(theme) {
-    const res = await fetch(`http://localhost:3000/api/${theme}`)
+    const res = await fetch(`https://rednewsreader.vercel.app/api/${theme}`)
     const data = await res.json()
     return data
 }
