@@ -28,14 +28,14 @@
   margin: 35px 0;
   padding: 20px;
   border-radius: 10px;
-  background-color: white;
+  background-color: black;
   box-shadow: 6px 6px 21px -11px rgb(105 105 105 / 50%);
   font-weight: 700;
 }
 .title {
   display: block;
   margin: 5px 0 15px 0;
-  color: #222;
+  color: rgb(222,227,234);
   font-size: 2rem;
 }
 .publisher {
