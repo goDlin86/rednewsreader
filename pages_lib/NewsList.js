@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 
 import themes from './themes'
 import Item from './Item'
+import { Analytics } from './Analytics'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
@@ -10,10 +11,6 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 
 dayjs.locale('ru')
 dayjs.extend(relativeTime)
-
-import ReactGA from 'react-ga4'
-
-ReactGA.initialize('G-FB40LD9BT4')
 
 const upContent = {
     initial: { y: 120, opacity: 0 },
@@ -42,8 +39,6 @@ export default async function NewsList({ theme }) {
             }
         ))
     }
-
-    ReactGA.send({ hitType: 'pageview', page: '/' + theme })
         
     return (
         <div>
@@ -52,6 +47,8 @@ export default async function NewsList({ theme }) {
             <footer className={styles.footer}>
                 Powered by Google News
             </footer>
+
+            {/* <Analytics /> */}
         </div>
     )
 }

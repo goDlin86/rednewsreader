@@ -2,7 +2,9 @@
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background-color: black;
+    background-color: #18181a;
+    border-radius: 10px;
+    border: 5px solid black;
     z-index: 999;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -13,7 +15,7 @@
     box-shadow: 0px 11px 20px -11px rgb(105 105 105 / 50%);
     font-size: 32px;
     font-weight: 700;
-    color: #222;
+    color: rgb(161 161 170);
 }
 .header a {
     justify-self: center;
@@ -22,7 +24,7 @@
     position: relative;
 }
 .header a.current, .header a:hover {
-    color: rgb(222,227,234);
+    color: white;
 }
 .header a:before {
     content: '';
