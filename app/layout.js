@@ -1,4 +1,5 @@
 import Nav from '../pages_lib/Nav'
+import Analytics from '../pages_lib/Analytics'
 
 import '../styles/globals.css'
 import styles from '../styles/Home.module.css'
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
             </head>
             <body>
                 <div className={styles.container}>
+                    <Analytics />
                     <Nav />
                     {children}
                 </div>

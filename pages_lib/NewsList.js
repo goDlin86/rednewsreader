@@ -3,7 +3,6 @@ import styles from '../styles/Home.module.css'
 
 import themes from './themes'
 import Item from './Item'
-import { Analytics } from './Analytics'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
@@ -47,8 +46,6 @@ export default async function NewsList({ theme }) {
             <footer className={styles.footer}>
                 Powered by Google News
             </footer>
-
-            {/* <Analytics /> */}
         </div>
     )
 }
