@@ -10,7 +10,6 @@ module.exports = {
     },
     swcMinify: true,
     experimental: {
-        // Required:
         appDir: true,
     },
 }

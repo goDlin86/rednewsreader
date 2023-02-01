@@ -18,7 +18,7 @@ const upContent = {
 }
 
 async function fetchData(theme) {
-    const res = await fetch(`https://rednewsreader.vercel.app/api/${theme}`, { next: { revalidate: 60 } })
+    const res = await fetch(`https://rednewsreader.vercel.app/api/${theme}`)
     const data = await res.json()
     return data
 }
