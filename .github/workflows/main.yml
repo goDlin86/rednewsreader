@@ -1,15 +1,15 @@
-name: db
+# name: db
 
-on:
-  schedule:
-    - cron:  '0 */2 * * *'
+# on:
+#   schedule:
+#     - cron:  '0 */2 * * *'
 
-jobs:
-  db-get:
-    runs-on: ubuntu-latest
+# jobs:
+#   db-get:
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: revalidate
-      uses: wei/curl@v1
-      with:
-        args: https://rednewsreader.vercel.app/api/revalidate?secret=${{ secrets.SECRET_TOKEN }}
+#     steps:
+#     - name: revalidate
+#       uses: wei/curl@v1
+#       with:
+#         args: https://rednewsreader.vercel.app/api/revalidate?secret=${{ secrets.SECRET_TOKEN }}
