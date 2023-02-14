@@ -1,9 +1,15 @@
-import { createScheduledFunction } from 'inngest'
+import { Inngest } from 'inngest'
 import { serve } from 'inngest/next'
 
-const revalidate = createScheduledFunction('Revalidate', '0 */2 * * *', async () => {
-  const res = await fetch('https://rednewsreader.vercel.app/api/revalidate?secret=' + process.env.SECRET_TOKEN)
-  return res
-})
+export const inngest = new Inngest({ name: 'rednewsreader' })
 
-export default serve('rednewsreader', [ revalidate ])
+const revalidate = inngest.createFunction(
+  { name: 'Revalidate RedNewsReader' }, 
+  { cron: '0 */2 * * *' }, 
+  async ({ event, step }) => {
+    const res = await fetch('https://rednewsreader.vercel.app/api/revalidate?secret=' + process.env.SECRET_TOKEN)
+    return res
+  }
+)
+
+export default serve(inngest, [ revalidate ])
