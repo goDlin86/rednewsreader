@@ -8,7 +8,7 @@ const revalidate = inngest.createFunction(
   { cron: '0 */2 * * *' }, 
   async ({ event, step }) => {
     const res = await fetch('https://rednewsreader.vercel.app/api/revalidate?secret=' + process.env.SECRET_TOKEN)
-    return res
+    return await res.json()
   }
 )
 
