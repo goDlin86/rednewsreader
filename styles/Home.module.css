@@ -76,7 +76,8 @@
   left: 30%;
   top: 0;
   right: 50px;
-  height: 3px;
+  height: 4px;
+  border-radius: 2px;
   background: #35b789;
 }
 
