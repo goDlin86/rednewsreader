@@ -12,4 +12,4 @@ const revalidate = inngest.createFunction(
   }
 )
 
-export default serve(inngest, [ revalidate ])
+export default serve(inngest, [ revalidate ], { logLevel: "fatal" | "error" | "warn" | "info" | "debug" | "silent" })
