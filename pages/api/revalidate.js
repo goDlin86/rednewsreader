@@ -4,13 +4,8 @@ export default async (req, res) => {
   }
 
   try {
-    await res.revalidate('/world')
-    await res.revalidate('/nation')
-    await res.revalidate('/sports')
-    await res.revalidate('/scitech')
-    await res.revalidate('/entertainment')
-    await res.revalidate('/business')
-    return res.json({ revalidated: true })
+    await res.revalidate('/' + req.query.theme)
+    return res.json({ revalidated: req.query.theme })
   } catch (err) {
     return res.status(500).json({ error: err.message })
   }
