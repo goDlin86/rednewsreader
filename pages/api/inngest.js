@@ -9,8 +9,8 @@ const revalidate = inngest.createFunction(
   async ({ event, step }) => {
     const themes = ['world', 'nation', 'sports', 'scitech', 'entertainment', 'business']
     
-    for (const theme in themes) {
-      await step.run(theme, async () => await f(theme))
+    for (let i = 0; i < themes.length; i++) {
+      await step.run(themes[i], async () => await f(themes[i]))
     }
   }
 )
