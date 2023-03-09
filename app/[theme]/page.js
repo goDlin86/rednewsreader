@@ -10,7 +10,7 @@ dayjs.locale('ru')
 dayjs.extend(relativeTime)
 
 async function fetchData(theme) {
-    const res = await fetch(`https://rednewsreader.vercel.app/api/${theme}`)
+    const res = await fetch(`https://rednewsreader.vercel.app/api/${theme}`, { cache: 'no-store' })
     const data = await res.json()
     return data
 }

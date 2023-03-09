@@ -7,7 +7,6 @@ import Item from './Item'
 const upContent = {
     initial: { y: 100, opacity: 0, transition: { type: 'spring', bounce: 0, duration: 0.4, staggerChildren: 0.1, delayChildren: 0.3 } },
     animate: { y: 0, opacity: 1, transition: { duration: 0.4, staggerChildren: 0.1 } },
-    //exit: { y: 50, opacity: 0 },
 }
 const itemVariants = {
     initial: { y: 20, opacity: 0 },
@@ -16,7 +15,6 @@ const itemVariants = {
 
 export default function NewsList({ items, color }) {
 
-        
     return (
         <>
         {/* <AnimatePresence initial={false} mode='wait' onExitComplete={() => window.scrollTo(0, 0)}> */}
@@ -24,7 +22,6 @@ export default function NewsList({ items, color }) {
                 key={color}
                 initial='initial'
                 animate='animate'
-                //exit='exit'
                 variants={upContent}
             >
                 {items.map((item, i) => (

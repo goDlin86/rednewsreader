@@ -5,7 +5,7 @@ export default async (req, res) => {
 
   try {
     await res.revalidate('/' + req.query.theme)
-    return res.json({ revalidated: req.query.theme })
+    return res.status(200).json({ revalidated: 'req.query.theme' })
   } catch (err) {
     return res.status(500).json({ error: err.message })
   }

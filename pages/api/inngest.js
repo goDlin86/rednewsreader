@@ -20,4 +20,4 @@ const f = async (theme) => {
   return await res.json()
 }
 
-export default serve(inngest, [ revalidate ], { logLevel: "fatal" | "error" | "warn" | "info" | "debug" | "silent" })
+//export default serve(inngest, [ revalidate ], { logLevel: "fatal" | "error" | "warn" | "info" | "debug" | "silent" })
