@@ -59,6 +59,8 @@
   font-size: 2rem;
 }
 .publisher {
+  position: absolute;
+  left: 25px;
   color: rgb(161 161 170);
   font-size: 1.2rem;
   margin: 0;
@@ -79,6 +81,14 @@
   height: 4px;
   border-radius: 2px;
   background: #35b789;
+}
+.text_highlight {
+  display: inline-block;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+  border-left: 4px solid;
+  border-radius: 0;
+  line-height: 1;
 }
 
 @media (max-width: 767px) {
