@@ -12,11 +12,19 @@ const hexToRgb = (hex) => {
 const Item = ({ item, color }) => (
     <article className={styles.article}>
         <a className={styles.title} href={item.link} target="_blank">
-            <span className={styles.text_highlight} style={{ borderColor: color, backgroundImage: `linear-gradient(90deg,rgba(${hexToRgb(color)},.2),rgba(${hexToRgb(color)},.0))` }}>{item.title}</span>
+            <span 
+                className={styles.text_highlight} 
+                style={{ 
+                    backgroundImage: `linear-gradient(90deg,rgba(${hexToRgb(color)},.2),rgba(${hexToRgb(color)},.0))` 
+                }}
+            >
+                {item.title}
+                <div className={styles.leftline} style={{ backgroundColor: color }} />
+            </span>
         </a>
         <p className={styles.publisher}>{item.publisher}</p>
         <p className={styles.time} style={{ color: color }}>{item.time}</p>
-        <div className={styles.line} style={{ background: color }} />
+        <div className={styles.line} style={{ backgroundColor: color }} />
     </article>
 )
 

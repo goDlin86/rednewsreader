@@ -17,7 +17,7 @@ const Nav = () => {
                     key={i} 
                     className={selectedLayoutSegment === theme.link ? styles.current : ''}
                 >
-                    {theme.title}
+                    {/* {theme.title} */}
                 </Link>
             ))}
         </header>

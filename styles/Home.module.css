@@ -80,15 +80,24 @@
   right: 50px;
   height: 4px;
   border-radius: 2px;
-  background: #35b789;
+  background-color: #35b789;
 }
 .text_highlight {
   display: inline-block;
+  position: relative;
   padding-right: 0.25rem;
   padding-left: 0.25rem;
-  border-left: 4px solid;
   border-radius: 0;
   line-height: 1;
+}
+.leftline {
+  position: absolute;
+  top: 0;
+  left: -4px;
+  height: 100%;
+  width: 4px;
+  border-radius: 2px;
+  background-color: #35b789;
 }
 
 @media (max-width: 767px) {
