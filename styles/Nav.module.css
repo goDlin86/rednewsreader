@@ -95,9 +95,6 @@
     }
 }
 @media (max-width: 767px) {
-    .header {
-        grid-template-columns: repeat(3, 1fr);
-    }
     .header a {
         padding: 10px 0;
     }
