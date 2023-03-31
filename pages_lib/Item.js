@@ -15,7 +15,7 @@ const Item = ({ item, color }) => (
             <span 
                 className={styles.text_highlight} 
                 style={{ 
-                    backgroundImage: `linear-gradient(90deg,rgba(${hexToRgb(color)},.2),rgba(${hexToRgb(color)},.0))` 
+                    backgroundImage: `linear-gradient(90deg,rgba(${hexToRgb(color)},.2),transparent 40%)` 
                 }}
             >
                 {item.title}
