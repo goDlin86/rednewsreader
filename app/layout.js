@@ -1,5 +1,5 @@
-import Nav from '../pages_lib/Nav'
-import Analytics from '../pages_lib/Analytics'
+import Nav from '../components/Nav'
+import Analytics from '../components/Analytics'
 
 import '../styles/globals.css'
 import styles from '../styles/Home.module.css'

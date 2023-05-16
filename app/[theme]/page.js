@@ -1,5 +1,5 @@
-import NewsList from '../../pages_lib/NewsList'
-import themes from '../../pages_lib/themes'
+import NewsList from '../../components/NewsList'
+import themes from '../../components/themes'
 import styles from '../../styles/Home.module.css'
 
 import dayjs from 'dayjs'
@@ -10,7 +10,7 @@ dayjs.locale('ru')
 dayjs.extend(relativeTime)
 
 async function fetchData(theme) {
-    const res = await fetch(`https://rednewsreader.vercel.app/api/${theme}`, { cache: 'no-store' })
+    const res = await fetch(`https://rednewsreader.vercel.app/api/get?theme=${theme}`, { next: { revalidate: 60 } })
     const data = await res.json()
     return data
 }

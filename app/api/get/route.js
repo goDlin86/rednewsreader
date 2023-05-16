@@ -1,7 +1,9 @@
+import { NextResponse } from 'next/server'
 import { parse } from 'node-html-parser'
 
-export default async function handler(req, res) {
-  const { theme } = req.query
+export async function GET(request) {
+  const { searchParams } = new URL(request.url)
+  const theme = searchParams.get('theme')
   
   const url = 'https://news.google.com/news/rss/headlines/section/topic/'+theme.toUpperCase()+'.ru_ru/?ned=ru_ru&hl=ru'
   const r = await fetch(url)
@@ -20,6 +22,6 @@ export default async function handler(req, res) {
       date: item.querySelector('pubdate').text
     })
   })
-  
-  res.status(200).json(news)
+
+  return NextResponse.json(news)
 }
