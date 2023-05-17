@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 
 export default function Loading() {
     return (

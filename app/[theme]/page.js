@@ -32,12 +32,12 @@ export default async function Page({ params }) {
     }
 
     return (
-        <div>
+        <>
             <NewsList items={items} color={t.color} />
 
             <footer className={styles.footer}>
                 Powered by Google News
             </footer>
-        </div>
+        </>
     )
 }

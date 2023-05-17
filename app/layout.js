@@ -1,8 +1,4 @@
-import Nav from '../components/Nav'
-import Analytics from '../components/Analytics'
-
 import '../styles/globals.css'
-import styles from '../styles/Home.module.css'
 
 export default function RootLayout({ children }) {
     return (
@@ -15,11 +11,7 @@ export default function RootLayout({ children }) {
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png" />
             </head>
             <body>
-                <div className={styles.container}>
-                    <Analytics />
-                    <Nav />
-                    {children}
-                </div>
+                {children}
             </body>
         </html>
     )

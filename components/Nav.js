@@ -1,13 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { useSelectedLayoutSegments } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import themes from './themes'
 
 import styles from '../styles/Nav.module.css'
 
 const Nav = () => {
-    const [selectedLayoutSegment] = useSelectedLayoutSegments()
+    const pathname = usePathname()
 
     return (
         <header className={styles.header}>
@@ -15,7 +15,7 @@ const Nav = () => {
                 <Link 
                     href={`/${theme.link}`} 
                     key={i} 
-                    className={selectedLayoutSegment === theme.link ? styles.current : ''}
+                    className={pathname.substring(1) === theme.link ? styles.current : ''}
                 >
                     {/* {theme.title} */}
                 </Link>
