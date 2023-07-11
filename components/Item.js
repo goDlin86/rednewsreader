@@ -22,9 +22,9 @@ const Item = ({ item, color }) => (
                 <div className={styles.leftline} style={{ backgroundColor: color }} />
             </span>
         </a>
-        <p className={styles.publisher}>{item.publisher}</p>
-        <p className={styles.time} style={{ color: color }}>{item.time}</p>
-        <div className={styles.line} style={{ backgroundColor: color }} />
+        <p className={styles.publisher}><span style={{ color: color }}>{item.time}</span>{' • ' + item.publisher}</p>
+        {/* <p className={styles.time} style={{ color: color }}>{item.time}</p> */}
+        {/* <div className={styles.line} style={{ backgroundColor: color }} /> */}
     </article>
 )
 
